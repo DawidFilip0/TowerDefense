@@ -56,7 +56,7 @@ class Game{
 			//prints buildings
 			
 			attron(COLOR_PAIR(2));
-			for(int i = 0; i < 15; i++){
+			for(int i = 0; i < 140; i++){
 				
 				move(path -> pathEdges[i][1],path -> pathEdges[i][0]);
 				refresh();

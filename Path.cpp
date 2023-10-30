@@ -33,28 +33,41 @@ int Path::getPointY(int s){
 
 void Path::calculatePathEdges(){
 	int dX = 0;
+	int dY = 0;
 	
-	
-	for(int i = 1; i < MAX_TURNS; i++){
+	for(int i = 1; i < 5; i++){  //HARDCODE FOR DEBUG, ADRESS LATER
 		dX = (route[i][0] - route[i-1][0]);
-		if (dX != 0){
+		dY = (route[i][1] - route[i-1][1]);
+		if (dX > 0){
 			for(int j = route[i][0]; j > route[i-1][0]; j--){
 				
 				pathEdges.push_back({j, route[i][1]+half_width});
 				pathEdges.push_back({j, route[i][1]-half_width});
 			}
 		}
-		else{
+		else if (dX < 0){
+			for(int j = route[i][0]; j < route[i-1][0]; j++){
+				
+				pathEdges.push_back({j, route[i][1]+half_width});
+				pathEdges.push_back({j, route[i][1]-half_width});
+			}
+		}	
+		else if (dY > 0){
 			for(int j = route[i][1]; j > route[i-1][1]; j--){
 				pathEdges.push_back({route[i][0]+half_width,j});
 				pathEdges.push_back({route[i][0]-half_width,j});
 			}
 			
 		}
+		else if (dY < 0){
+			for(int j = route[i][1]; j < route[i-1][1]; j++){
+				pathEdges.push_back({route[i][0]+half_width,j});
+				pathEdges.push_back({route[i][0]-half_width,j});
+			}
+			
+		}
+		
 	}
 	
 
-//	for(int i = 0; i < 16; i++){
-//		pathEdges.push_back({i,2*i});
-//	}
 };
