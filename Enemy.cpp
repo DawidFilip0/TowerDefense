@@ -1,6 +1,8 @@
 #include <string>
 #include <chrono>
 #include <ctime>
+#include "Menu.h"
+#include "Path.h"
 using namespace std::chrono;
 using namespace std;
 
@@ -15,8 +17,9 @@ class Enemy {
 		int maxHealth;
 		int speed;
 		int colour;
+		int step = 0;
 	public:
-		
+		Path* path;
 	
 	Enemy(){
 		this -> x = 10;
@@ -26,13 +29,15 @@ class Enemy {
 		this -> speed = 1000;
 		this -> colour = 1;
 		lastCallTime = std::chrono::high_resolution_clock::now();	
-		}	
-	Enemy(int x,int y,int maxHealth,int speed, string colour){   //speed is how many milliseconds should pass beetween enemies movements
+		}
+			
+	Enemy(int x,int y,int maxHealth,int speed, string colour,Path* path){   //speed is how many milliseconds should pass beetween enemies movements
 		this -> x = x;
 		this -> y = y;
 		this -> maxHealth = maxHealth;
 		this -> health = this -> maxHealth;
 		this -> speed = speed;
+		this -> path = path;
 		lastCallTime = std::chrono::high_resolution_clock::now();		
 	};
 	
@@ -67,10 +72,24 @@ class Enemy {
 		float percent = health;
 	}	
 	            
-	void move(int x_mv, int y_mv){
+	void move(){
 			if(can_move()){
-				x += x_mv;
-				y += y_mv;	
+
+				if(path -> getPointX(step) == x && path -> getPointY(step) == y){
+					step++;
+				}
+				if(path -> getPointX(step) > x ){
+					x++;
+				}
+				else if(path -> getPointX(step) < x){
+					x--;
+				}
+				else if(path -> getPointY(step) < y){
+					y--;
+				}
+				else if(path -> getPointY(step) > y){
+					y++;
+				}
 			}
 	}
 	

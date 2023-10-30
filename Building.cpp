@@ -2,7 +2,7 @@
 #include "Enemy.cpp"
 
 using namespace std;
-class Building {       // The class	
+class Building {       	
 	private:
 		int damage;
 		double attack_speed;

@@ -5,7 +5,7 @@
 #include <curses.h>
 #endif
 #include "Enemy.cpp"
-#include "Path.cpp"
+#include "Path.h"
 
 using namespace std;
 
@@ -57,13 +57,14 @@ class Game{
 			
 			attron(COLOR_PAIR(2));
 			for(int i = 0; i < 4; i++){
-				move(path->route[i][1],path->route[i][0]);
+				
+				move(path -> getPointY(i),path -> getPointX(i));
 				refresh();
 				addch('@'); 
 			}
+			attroff(COLOR_PAIR(2)); 
 			move(0,0);	
 			refresh();			
-			attroff(COLOR_PAIR(2)); 
 	
 		}
 
@@ -72,23 +73,7 @@ class Game{
 			
 			//updates enemies
 			for(int i = 0; i < 5; i++){
-//				switch (input){
-//				default:
-//					break;
-//				case KEY_UP:
-//					enemies[i].move(0,-1);
-//					break;
-//				case KEY_DOWN:
-//					enemies[i].move(0,1);
-//					break;
-//				case KEY_LEFT:
-//					enemies[i].move(-1,0);
-//					break;
-//				case KEY_RIGHT:
-//					enemies[i].move(1,0);
-//					break;
-//			}
-				enemies[i].move(1,0);
+				enemies[i].move();
 			}
 			
 			//updates buildings
@@ -103,7 +88,8 @@ class Game{
 				enemies[i].setX(10); 
 				enemies[i].setY(10-i);
 				enemies[i].setHealth(200);
-				enemies[i].setSpeed(150 + i*150);
+				enemies[i].setSpeed(15 + i*150);
+				enemies[i].path = path;
 			}
 			
 			while(1){
@@ -116,6 +102,7 @@ class Game{
 		auto end(){
 			delwin(mainwin);
 			endwin();
+			
 			refresh();
 			return EXIT_SUCCESS;
 			

@@ -1,23 +1,26 @@
-#include <string>
-using namespace std;
+#include "Path.h"
 
+Path::Path(int points[][2]) {
+	MAX_TURNS = 20;
+    route = new int*[MAX_TURNS];
+    for (int i = 0; i < MAX_TURNS; i++) {
+        route[i] = new int[2];
+        route[i][0] = points[i][0];
+        route[i][1] = points[i][1];
+    }
+}
 
-class Path {
-private:
-    const int MAX_TURNS = 20; // Maximum number of turns the path will take
-    int colour;
+Path::~Path() {
+    for (int i = 0; i < MAX_TURNS; i++) {
+        delete[] route[i];
+    }
+    delete[] route;
+}
 
-public:
-	int **route = new int*[MAX_TURNS] ;
-    Path(int points[][2]) {
-    	for(int i = 0; i < MAX_TURNS; i++){
-    		route[i] = new int[2];
-		}
-    	
-        for (int i = 0; i < MAX_TURNS; i++) {
-            route[i][0] = points[i][0];
-            route[i][1] = points[i][1];
-        }
-    };
-};
+int Path::getPointX(int s){
+	return route[s][0];
+}
 
+int Path::getPointY(int s){
+	return route[s][1];
+}
