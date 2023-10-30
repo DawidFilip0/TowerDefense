@@ -18,7 +18,7 @@ class Game{
 		const int MAX_BUILDINGS = 50;
 		const int MAX_ENEMIES = 150;
 		int input;
-		int pat[4][2] = {{10,10},{40,10},{40,20},{5,20}};  // testing variable, delete later
+		int pat[4][2] = {{10,10},{40,10},{40,20},{5,20}};  // delete later
 	public:
 		Game(){								
 
@@ -48,7 +48,7 @@ class Game{
 		
 			//prints enemies 
 			for(int i = 0; i < 5; i++){
-				move(enemies[i].y,enemies[i].x);
+				move(enemies[i].getY(),enemies[i].getX());
 				refresh();
 				addch(character); 
 			}
@@ -67,7 +67,7 @@ class Game{
 	
 		}
 
-		void update(int input){
+		void update(){
 		
 			
 			//updates enemies
@@ -99,22 +99,17 @@ class Game{
 		
 	
 		void game_loop(){
-			int last_character = 'e';
 			for(int i = 0; i < 5; i++){
-				enemies[i].x = 10;
-				enemies[i].y = 10-i;
-				enemies[i].health = 10 + i;
-				enemies[i].speed = (150*i) + 200;
-				enemies[i].colour = 2;
+				enemies[i].setX(10); 
+				enemies[i].setY(10-i);
+				enemies[i].setHealth(200);
+				enemies[i].setSpeed(150 + i*150);
 			}
 			
 			while(1){
-			napms(100);	
-//			input = getch();
-			input = 1;
-//			if(input != ERR)  
-			update(input);
-			draw(last_character);
+				napms(50);	 
+				update();
+				draw('e');
 			}
 		}
 		
