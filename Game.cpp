@@ -6,6 +6,8 @@
 #endif
 #include "Enemy.cpp"
 #include "Path.h"
+#include "Menu.h"
+#include <string>
 
 using namespace std;
 
@@ -14,14 +16,15 @@ class Game{
 		WINDOW *mainwin;
 		Enemy *enemies;
 		Path *path;
+		Menu *menu;
 		
 		const int MAX_BUILDINGS = 50;
 		const int MAX_ENEMIES = 150;
-		int input;
 		int pat[4][2] = {{10,10},{40,10},{40,20},{5,20}};  // delete later
 	public:
 		Game(){								
-
+			
+			menu = new Menu;
 			enemies = new Enemy[5];		 
 			path = new Path(pat);
 		}
@@ -34,35 +37,63 @@ class Game{
 		void init(){
 			mainwin = initscr();
 			ncurses_config();
+
+
+			printw("press x to start");
+			getch();
 		}
 	
 		void ncurses_init_colors(){
 			start_color();
-			init_pair(1, COLOR_GREEN, COLOR_BLACK);
-			init_pair(2, COLOR_RED, COLOR_BLACK);
+			init_pair(1, COLOR_WHITE, COLOR_BLACK);  //neutral
+			init_pair(2, COLOR_BLUE, COLOR_BLACK);   //building
+			init_pair(3, COLOR_GREEN, COLOR_BLACK);  //high health
+			init_pair(4, COLOR_YELLOW, COLOR_BLACK); //mid health
+			init_pair(5, COLOR_RED, COLOR_BLACK);    //low health
+			
+			
 		}
 	
 		void draw(int character){
-			clear(); 
-			attron(COLOR_PAIR(1));
-		
+			erase(); 
+			
+			attron(COLOR_PAIR(3));
 			//prints enemies 
 			for(int i = 0; i < 5; i++){
 				move(enemies[i].getY(),enemies[i].getX());
-				refresh();
 				addch(character); 
 			}
-			attroff(COLOR_PAIR(1)); 
+			attroff(COLOR_PAIR(3)); 
+			
 			//prints buildings
 			
-			attron(COLOR_PAIR(2));
-			for(int i = 0; i < 140; i++){
+			
+			//prints path
+			attron(COLOR_PAIR(1));
+			for(int i = 0; i < 162; i++){
 				
 				move(path -> pathEdges[i][1],path -> pathEdges[i][0]);
-				refresh();
 				addch('@'); 
 			}
-			attroff(COLOR_PAIR(2)); 
+			refresh();
+			attroff(COLOR_PAIR(1)); 
+			
+			//prints menu
+			for(int i = 0; i < 30; i++){
+				move(i,90);
+				addch('|');
+				if( i < 9 ){
+					
+					string& str = menu -> getOption(0,i);
+
+					
+					printw(str.c_str());
+					
+				}
+			
+			}
+			
+			
 			move(0,0);	
 			refresh();			
 	
