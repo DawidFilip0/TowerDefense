@@ -1,21 +1,36 @@
-#ifndef Menu_h
-#define Menu_h
+#pragma once
 #include <string>
+
+#include <iostream>
+#ifdef _WIN32
+#include <ncursesw/curses.h>
+#else
+#include <curses.h>
+#endif
 
 using namespace std;
 
 class Menu{
+	private:
+		int	cursorX = 2;
+		int cursorY = 2;
+		std::string str;
+		int *playerHealth;
+		int selectedMenuOption = 0;
+		bool previewBuilding = false;
+		
+				
 	public:
 		
-		Menu();
+		Menu(int *playerHealth);
 		
 		void borderPositions();
-		string options[2][10];
+		string options[2][11];
 		string& getOption(int x, int y);
-	
-	private:
+		void showCursor();
+		void printMenu();
+		void handleInput(int ch);
+
 	
 	};
 
-
-#endif
