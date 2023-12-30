@@ -12,6 +12,7 @@ int Wave::get_wave() {
 
 void Wave::update() {
     for (Enemy& enemy : *enemies) {
+    	
         enemy.update();
     }
 
@@ -19,6 +20,7 @@ void Wave::update() {
         enemies->clear();
         init_wave(10, 1);
     }
+    
 }
 
 bool Wave::detect_end_of_wave() {

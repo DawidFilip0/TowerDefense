@@ -33,8 +33,10 @@ class Game{
 	public:
 		int health = 100;
 		Game(){	
-				path = new Path(pat,7);			
-			buildingManager = new BldMgr(&(path -> pathEdges));	
+		
+			path = new Path(pat,7);	
+			wave = new Wave(path,&health);			
+			buildingManager = new BldMgr(&(path -> pathEdges),wave);	
 			menu = new Menu(&health, buildingManager);		
 		}
 		
@@ -86,7 +88,6 @@ class Game{
 			
 		void game_loop(){	
 				
-			wave = new Wave(path,&health);			
 			wave -> init_wave(8,13);
 			
 			while(1){

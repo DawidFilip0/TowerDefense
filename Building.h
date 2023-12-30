@@ -7,11 +7,13 @@
 #include <curses.h>
 #endif
 
-#include<vector>
-#include "Path.h"
 #include <string>
+#include<vector>
+
+#include "Path.h"
 #include "Enemy.h"
 #include "Clock.h"
+
 
 class Menu;
 
@@ -20,6 +22,7 @@ private:
     int damage;
     double attack_speed;
     Clock* clock;
+    std::vector<Enemy> *enemies;
 
 public:
     int x;
@@ -27,7 +30,7 @@ public:
     int range;
     int level;
 	Building();
-    Building(int x, int y);
+    Building(int x, int y, std::vector<Enemy> *enemies);
     void draw();
     void update();
     void attack();
