@@ -12,7 +12,6 @@ private:
     int health;
     int maxHealth;
     int speed;
-    int colour;
     int step = 0;
     int* player_hp;
     Path* path;
@@ -22,7 +21,7 @@ public:
     bool alive = true;
 
     Enemy();
-    Enemy(int x, int y, int maxHealth, int speed, int colour, Path* path, int* player_hp);
+    Enemy(int x, int y, int maxHealth, int speed,Path* path, int* player_hp);
     ~Enemy();
 
     int getX();
@@ -30,6 +29,7 @@ public:
     void setX(int sX);
     void setY(int sY);
     int getHealth();
+    int getMaxHealth();
     void setHealth(int h);
     void setSpeed(int sp);
     void changeColour();

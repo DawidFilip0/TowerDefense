@@ -5,10 +5,9 @@ Enemy::Enemy() {
     this->y = 10;
     this->health = 10;
     this->speed = 1000;
-    this->colour = 1;
 }
 
-Enemy::Enemy(int x, int y, int maxHealth, int speed, int colour, Path* path, int* player_hp) {
+Enemy::Enemy(int x, int y, int maxHealth, int speed, Path* path, int* player_hp) {
     this->x = x;
     this->y = y;
     this->player_hp = player_hp;
@@ -41,6 +40,10 @@ void Enemy::setY(int sY) {
 
 int Enemy::getHealth() {
     return health;
+}
+
+int Enemy::getMaxHealth(){
+	return maxHealth;
 }
 
 void Enemy::setHealth(int h) {

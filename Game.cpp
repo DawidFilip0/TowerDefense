@@ -32,10 +32,10 @@ class Game{
 		BldMgr *buildingManager;
 	public:
 		int health = 100;
-		Game(){			
-			buildingManager = new BldMgr();	
-			menu = new Menu(&health, buildingManager);
-			path = new Path(pat,7);			
+		Game(){	
+				path = new Path(pat,7);			
+			buildingManager = new BldMgr(&(path -> pathEdges));	
+			menu = new Menu(&health, buildingManager);		
 		}
 		
 		void ncurses_config(){	
@@ -52,8 +52,6 @@ class Game{
 		void init(){
 			mainwin = initscr();
 			ncurses_config();
-			printw("press x to start");
-			getch();
 		}
 	
 		void ncurses_init_colors(){
@@ -74,15 +72,14 @@ class Game{
 			path -> drawPath();	
 			menu -> printMenu();
 			menu -> showCursor();
-			
 									
 			move(0,0);	
-			refresh();			
-	
+			refresh();				
 		}
 
 		void update(){	
 			wave -> update();	
+			
 			menu -> handleInput(ch);
 			buildingManager -> updateBuildings();
 		}
@@ -93,9 +90,9 @@ class Game{
 			wave -> init_wave(8,13);
 			
 			while(1){
-				napms(50);	 
+				napms(10);
+				ch = getch();	 
 				update();
-				ch = getch();
             	draw();
         	}
 		}

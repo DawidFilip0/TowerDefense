@@ -1,12 +1,16 @@
-
 #include "BldMgr.h"
 
-BldMgr::BldMgr(){
-	std::vector<Building> *buildings = new std::vector<Building>;
+BldMgr::BldMgr(std::vector<std::vector<int>> *pathEdges){
+	buildings = new std::vector<Building>;
+	this -> pathEdges = pathEdges;
 }
 
-void BldMgr::addBuilding(int x, int y){
-	
+void BldMgr::addBuilding(int x, int y){	this -> pathEdges = pathEdges;
+	for(std::vector<int>& v : *pathEdges){
+ 		if((x+1 == v[0] && y+1 == v[1] )||(x-1 == v[0] && y-1 == v[1])||(x+1 == v[0] && y-1 == v[1])||(x-1 == v[0] && y+1 == v[1])){
+ 			return;
+		}
+	}
 	buildings -> push_back(Building(x,y));
 }
 

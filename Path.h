@@ -8,8 +8,6 @@
 #include <string>
 #include <vector>
 
-#include <vector>
-
 class Path {
 private:
     int half_width;

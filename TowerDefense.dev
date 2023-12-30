@@ -29,7 +29,7 @@ IncludeVersionInfo=0
 SupportXPThemes=0
 CompilerSet=0
 CompilerSettings=0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;1;0;0;0;4;0;0;0
-UnitCount=17
+UnitCount=16
 
 [VersionInfo]
 Major=1
@@ -200,8 +200,8 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit16]
-FileName=Untitled1
+[Unit15]
+FileName=BldMgr.h
 CompileCpp=1
 Folder=
 Compile=1
@@ -210,8 +210,8 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit15]
-FileName=BldMgr.h
+[Unit16]
+FileName=BldMgr.cpp
 CompileCpp=1
 Folder=
 Compile=1
