@@ -39,3 +39,15 @@ void Wave::init_wave(int num_of_enemies, int difficulty) {
 void Wave::set_wave(int n) {
     wave_number = n;
 }
+
+void Wave::drawEnemies(){
+		attron(COLOR_PAIR(4));			
+		for (Enemy& enemy : *enemies) {
+				if(!enemy.alive || enemy.getX() < 1 || enemy.getY() < 1){
+					continue;
+				}
+        		move(enemy.getY(), enemy.getX());
+				addch('e'); 
+        }
+        attroff(COLOR_PAIR(4)); 
+}

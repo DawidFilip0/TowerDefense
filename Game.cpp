@@ -66,41 +66,15 @@ class Game{
 			
 		}
 	
-		void draw(int character){
+		void draw(){
 			erase(); 
 			
-			attron(COLOR_PAIR(4));
-			//prints enemies 
-			
-			
-			for ( Enemy& enemy : *(wave -> enemies)) {
-				if(!enemy.alive || enemy.getX() < 1 || enemy.getY() < 1){
-					continue;
-				}
-        		move(enemy.getY(), enemy.getX());
-				addch(character); 
-        	}
-
-        	
-			attroff(COLOR_PAIR(4)); 
-				
-			//prints buildings
-			buildingManager -> drawBuildings();
-						
-			//prints path
-			attron(COLOR_PAIR(1));		
-			for(vector<int> v : path -> pathEdges){
-				move(v[1],v[0]);
-				addch('@'); 
-			}
-			refresh();
-
-			attroff(COLOR_PAIR(1)); 
-			
-			//prints menu
+			wave -> drawEnemies();
+			buildingManager -> drawBuildings();						
+			path -> drawPath();	
 			menu -> printMenu();
 			menu -> showCursor();
-			menu -> handleInput(ch);
+			
 									
 			move(0,0);	
 			refresh();			
@@ -108,14 +82,11 @@ class Game{
 		}
 
 		void update(){	
-			//updates enemies
 			wave -> update();	
-			
-			//updates buildings
+			menu -> handleInput(ch);
 			buildingManager -> updateBuildings();
 		}
-		
-	
+			
 		void game_loop(){	
 				
 			wave = new Wave(path,&health);			
@@ -125,18 +96,14 @@ class Game{
 				napms(50);	 
 				update();
 				ch = getch();
-				if(ch == 'a'){health -=1;
-				}
-            	draw('e');
+            	draw();
         	}
 		}
-		
-		
+				
 		auto end(){
 			delwin(mainwin);
 			endwin();
 			refresh();
-			return EXIT_SUCCESS;
-			
+			return EXIT_SUCCESS;			
 		};
 };

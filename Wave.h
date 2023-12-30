@@ -19,4 +19,5 @@ public:
     bool detect_end_of_wave();
     void init_wave(int num_of_enemies, int difficulty);
     void set_wave(int n);
+    void drawEnemies();
 };

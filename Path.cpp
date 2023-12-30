@@ -38,6 +38,16 @@ int Path::getPointY(int s){
 	return route[s][1];
 }
 
+void Path::drawPath(){
+		attron(COLOR_PAIR(1));		
+			for(std::vector<int> v : pathEdges){
+				move(v[1],v[0]);
+				addch('@'); 
+			}
+			refresh();
+		attroff(COLOR_PAIR(1));
+}
+
 void Path::calculatePathEdges(){
 	int dX = 0;
 	int dY = 0;

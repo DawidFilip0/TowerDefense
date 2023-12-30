@@ -1,5 +1,13 @@
 #ifndef Path_h
 #define Path_h
+#ifdef _WIN32
+#include <ncursesw/curses.h>
+#else
+#include <curses.h>
+#endif
+#include <string>
+#include <vector>
+
 #include <vector>
 
 class Path {
@@ -15,6 +23,7 @@ public:
     ~Path();
     int getPointX(int s);
     int getPointY(int s);
+    void drawPath();
     void calculatePathEdges();
   
 };
