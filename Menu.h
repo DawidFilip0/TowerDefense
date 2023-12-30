@@ -8,6 +8,8 @@
 #include <curses.h>
 #endif
 
+#include "BldMgr.h"
+
 using namespace std;
 
 class Menu{
@@ -18,11 +20,12 @@ class Menu{
 		int *playerHealth;
 		int selectedMenuOption = 0;
 		bool previewBuilding = false;
+		BldMgr *buildingManager;
 		
 				
 	public:
 		
-		Menu(int *playerHealth);
+		Menu(int *playerHealth, BldMgr *buildingManager);
 		
 		void borderPositions();
 		string options[2][11];

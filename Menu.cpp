@@ -1,8 +1,9 @@
 #include <string>
 #include "Menu.h"
 
-Menu::Menu(int *playerHealth){
+Menu::Menu(int *playerHealth , BldMgr *buildingManager){
 	this -> playerHealth = playerHealth;
+	this -> buildingManager = buildingManager;
     options[0][0] = "";
     options[0][1] = "  [1] Building menu";
     options[0][2] = "  [2] Upgrade Menu";
@@ -59,9 +60,10 @@ void Menu::handleInput(int ch){
                 	
                 	break;
                 case ' ':
+                	
                 	if (previewBuilding == true){
                 		previewBuilding = false;
-                		
+                		buildingManager -> addBuilding(cursorX,cursorY);
 					}
 					break;
 

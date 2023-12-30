@@ -7,6 +7,7 @@ class BldMgr{
 		std::vector<Building> *buildings;
 	public:
 		BldMgr();
-		void addBuilding();
+		void addBuilding(int x, int y);
 		void updateBuildings();
-};
+		void drawBuildings();
+};		

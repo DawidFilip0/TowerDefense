@@ -29,12 +29,12 @@ class Game{
 		int pat[7][2] = {{0,20},{10,20},{10,10},{42,10},{42,20},{65,20},{65,0}};
 		int ch;
 		MEVENT event;
-		std::vector<Building>* buildings;
+		BldMgr *buildingManager;
 	public:
 		int health = 100;
 		Game(){			
-			std::vector<Building>* buildings = new std::vector<Building>();		
-			menu = new Menu(&health);
+			buildingManager = new BldMgr();	
+			menu = new Menu(&health, buildingManager);
 			path = new Path(pat,7);			
 		}
 		
@@ -85,7 +85,7 @@ class Game{
 			attroff(COLOR_PAIR(4)); 
 				
 			//prints buildings
-			
+			buildingManager -> drawBuildings();
 						
 			//prints path
 			attron(COLOR_PAIR(1));		
@@ -98,26 +98,21 @@ class Game{
 			attroff(COLOR_PAIR(1)); 
 			
 			//prints menu
-			
 			menu -> printMenu();
 			menu -> showCursor();
 			menu -> handleInput(ch);
-			
-			
-					
+									
 			move(0,0);	
 			refresh();			
 	
 		}
 
-		void update(){
-		
-			
+		void update(){	
 			//updates enemies
-			wave -> update();			//updates buildings
-			for(int i = 0; i < 1; i++){
-				
-			}
+			wave -> update();	
+			
+			//updates buildings
+			buildingManager -> updateBuildings();
 		}
 		
 	
