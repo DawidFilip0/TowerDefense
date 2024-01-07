@@ -7,10 +7,11 @@ Enemy::Enemy() {
     this->speed = 1000;
 }
 
-Enemy::Enemy(int x, int y, int maxHealth, int speed, Path* path, int* player_hp) {
+Enemy::Enemy(int x, int y, int maxHealth, int speed, Path* path, int* player_hp, int* money) {
     this->x = x;
     this->y = y;
     this->player_hp = player_hp;
+    this-> money = money;
     this->maxHealth = maxHealth;
     this->health = this->maxHealth;
     this->speed = speed;
@@ -82,6 +83,9 @@ void Enemy::move() {
 void Enemy::update() {
     move();
     if(health <= 0){
+    	if(alive == true){
+    		*money += 10;
+		}
     	alive = false;
 	}
     

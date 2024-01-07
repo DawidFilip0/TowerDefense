@@ -9,11 +9,12 @@ private:
     const int MAX_ENEMIES = 150;
     Path* path;
     int* player_health;
+    int *money;
 
 public:
     std::vector<Enemy>* enemies;
 
-    Wave(Path* p, int* player_health);
+    Wave(Path* p, int* player_health, int* money);
     int get_wave();
     void update();
     bool detect_end_of_wave();

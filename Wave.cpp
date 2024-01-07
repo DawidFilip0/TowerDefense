@@ -1,9 +1,10 @@
 #include "Wave.h"
 
-Wave::Wave(Path* p, int* player_health) {
+Wave::Wave(Path* p, int* player_health, int* money) {
     this->player_health = player_health;
     this->path = p;
     enemies = new std::vector<Enemy>;
+    this -> money = money;
 }
 
 int Wave::get_wave() {
@@ -19,6 +20,7 @@ void Wave::update() {
     if (detect_end_of_wave()) {
         enemies->clear();
         init_wave(10, 1);
+        *money += 100;
     }
     
 }
@@ -34,7 +36,7 @@ bool Wave::detect_end_of_wave() {
 
 void Wave::init_wave(int num_of_enemies, int difficulty) {
     for (int i = 0; i < num_of_enemies; i++) {
-        enemies->push_back(Enemy(20, 0 - 5 * i, 100, 100 + 5 * i, path, player_health));
+        enemies->push_back(Enemy(20, 0 - 5 * i, 100, 100 + 5 * i, path, player_health, money));
     }
 }
 

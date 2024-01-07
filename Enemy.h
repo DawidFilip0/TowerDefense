@@ -14,6 +14,7 @@ private:
     int speed;
     int step = 0;
     int* player_hp;
+    int * money;
     Path* path;
     Clock* clock;
 
@@ -21,7 +22,7 @@ public:
     bool alive = true;
 
     Enemy();
-    Enemy(int x, int y, int maxHealth, int speed,Path* path, int* player_hp);
+    Enemy(int x, int y, int maxHealth, int speed,Path* path, int* player_hp, int* money);
     ~Enemy();
 
     int getX();

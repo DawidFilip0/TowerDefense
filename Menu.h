@@ -21,11 +21,12 @@ class Menu{
 		int selectedMenuOption = 0;
 		bool previewBuilding = false;
 		BldMgr *buildingManager;
+		int *money; 
 		
 				
 	public:
 		
-		Menu(int *playerHealth, BldMgr *buildingManager);
+		Menu(int *playerHealth, BldMgr *buildingManager, int *money);
 		
 		void borderPositions();
 		string options[2][11];

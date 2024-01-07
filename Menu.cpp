@@ -1,9 +1,10 @@
 #include <string>
 #include "Menu.h"
 
-Menu::Menu(int *playerHealth , BldMgr *buildingManager){
+Menu::Menu(int *playerHealth , BldMgr *buildingManager, int *money){
 	this -> playerHealth = playerHealth;
 	this -> buildingManager = buildingManager;
+	this -> money = money;
     options[0][0] = "";
     options[0][1] = "  [1] Building menu";
     options[0][2] = "  [2] Upgrade Menu";
@@ -85,22 +86,16 @@ void Menu::showCursor(){
 					}
 				}
 				attroff(COLOR_PAIR(2));
-			}
-
-	
+			}	
 }
 
 void Menu::printMenu(){
 	for(int i = 0; i < 30; i++){
 				move(i,90);
 				addch('|');
-				if( i < 11 ){
-					
-					str = getOption(selectedMenuOption,i);
-
-					
-					printw(str.c_str());
-					
+				if( i < 11 ){					
+					str = getOption(selectedMenuOption,i);					
+					printw(str.c_str());					
 				}
 				if(i == 28) {
 					attron(COLOR_PAIR(5));
@@ -108,6 +103,13 @@ void Menu::printMenu(){
 					printw(h.c_str());
 				 	printw(to_string(*playerHealth).c_str());
 					attroff(COLOR_PAIR(5)); 
+				}
+				if(i == 26) {
+					attron(COLOR_PAIR(4));
+					string h = "        Money: ";
+					printw(h.c_str());
+				 	printw(to_string(*money).c_str());
+					attroff(COLOR_PAIR(4)); 
 				}
 			
 			}

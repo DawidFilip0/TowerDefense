@@ -29,15 +29,16 @@ class Game{
 		int pat[7][2] = {{0,20},{10,20},{10,10},{42,10},{42,20},{65,20},{65,0}};
 		int ch;
 		MEVENT event;
-		BldMgr *buildingManager;
+		BldMgr *buildingManager;		
 	public:
 		int health = 100;
+		int money = 1000;
 		Game(){	
 		
 			path = new Path(pat,7);	
-			wave = new Wave(path,&health);			
+			wave = new Wave(path,&health, &money);			
 			buildingManager = new BldMgr(&(path -> pathEdges),wave);	
-			menu = new Menu(&health, buildingManager);		
+			menu = new Menu(&health, buildingManager, &money);		
 		}
 		
 		void ncurses_config(){	

@@ -7,7 +7,7 @@ Building::Building(int x, int y, std::vector<Enemy> *enemies){
 	this -> y = y;
 	this -> clock = new Clock(500);
 	this -> enemies = enemies;
-	range = 5;
+	range = 15;
 //	projectile = new Projectile(0,0,0,0);
 	
 };
@@ -38,16 +38,15 @@ void Building::attack(){
 
 void Building::draw(){
 		attron(COLOR_PAIR(2));
-//		projectile ->draw();
-		 for (Projectile& projectile : projectiles) {
-            projectile.draw();
-        }
-				for(int i = -1; i<2;i++){
+		for(int i = -1; i<2;i++){
 					for(int j = -1; j<2;j++){
 						move(y+j,x+i);
 						addch('#');
 					}
 				}
+		for (Projectile& projectile : projectiles) {
+            projectile.draw();
+        }
 		attroff(COLOR_PAIR(2));
 			
 }

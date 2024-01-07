@@ -6,7 +6,7 @@ Projectile::Projectile(int x, int y, int dest_x, int dest_y){
 	this -> y = y;
 	this -> dest_x = dest_x;
 	this -> dest_y = dest_y;
-	this -> clock = new Clock(150);
+	this -> clock = new Clock(80);
 };
 
 Projectile::~Projectile(){
@@ -19,20 +19,22 @@ void Projectile::mv(){
 	if(x < dest_x){
 		x++;
 	}
-	else{
+	else if (x > dest_x){
 		x--;
 	}
 	if(y < dest_y){
 		y++;
 	}
-	else{
+	else if(y > dest_y){
 		y--;
 	}	
 }
 
 void Projectile::draw(){
+	attron(COLOR_PAIR(4));
 	move(y,x);
 	addch('*');
+	attron(COLOR_PAIR(2));
 }
 
 bool Projectile::reached_destination(){
