@@ -43,13 +43,13 @@ void Wave::set_wave(int n) {
 }
 
 void Wave::drawEnemies(){
-		
+		float percentHealth = 1;
 		for (Enemy& enemy : *enemies) {
 				if(!enemy.alive || enemy.getX() < 1 || enemy.getY() < 1){
 					continue;
 				}
 				attron(COLOR_PAIR(3));
-				percentHealth = enemy.getHealth()/enemy.getMaxHealth();
+				percentHealth = (float)enemy.getHealth()/(float)enemy.getMaxHealth();
 				if(percentHealth< 0.6f){
 					attroff(COLOR_PAIR(3)); 
 					attron(COLOR_PAIR(4));

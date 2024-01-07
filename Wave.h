@@ -9,7 +9,6 @@ private:
     const int MAX_ENEMIES = 150;
     Path* path;
     int* player_health;
-    float percentHealth = 1;
 
 public:
     std::vector<Enemy>* enemies;

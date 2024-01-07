@@ -13,16 +13,21 @@
 #include "Path.h"
 #include "Enemy.h"
 #include "Clock.h"
+#include "Projectile.h"
+#include <algorithm> 
 
 
 class Menu;
 
 class Building{
 private:
-    int damage;
+    int damage = 25;
     double attack_speed;
     Clock* clock;
+    Projectile* projectile;
     std::vector<Enemy> *enemies;
+    std::vector<Projectile> projectiles;
+    void update_projectiles();
 
 public:
     int x;

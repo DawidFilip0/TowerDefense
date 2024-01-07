@@ -81,6 +81,10 @@ void Enemy::move() {
 
 void Enemy::update() {
     move();
+    if(health <= 0){
+    	alive = false;
+	}
+    
     if (step >= path->no_turns) {
         if (alive == true) {
             *player_hp -= 2;
