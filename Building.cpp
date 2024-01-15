@@ -2,16 +2,16 @@
 #include <cmath>
 
 
-Building::Building(int x, int y, std::vector<Enemy> *enemies){
+Building::Building(int x, int y, std::vector<Enemy> *enemies, int *money){
 	this -> x = x;
 	this -> y = y;
 	this -> clock = new Clock(500);
 	this -> enemies = enemies;
 	range = 15;
+	*money -= 100;
 //	projectile = new Projectile(0,0,0,0);
 	
 };
-
 Building::Building(){
 	x = 10;
 	y = 10;

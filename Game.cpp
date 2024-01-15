@@ -37,7 +37,7 @@ class Game{
 		
 			path = new Path(pat,7);	
 			wave = new Wave(path,&health, &money);			
-			buildingManager = new BldMgr(&(path -> pathEdges),wave);	
+			buildingManager = new BldMgr(&(path -> pathEdges),wave, &money);	
 			menu = new Menu(&health, buildingManager, &money);		
 		}
 		

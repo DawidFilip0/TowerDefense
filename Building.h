@@ -20,7 +20,7 @@
 class Menu;
 
 class Building{
-private:
+protected:
     int damage = 25;
     double attack_speed;
     Clock* clock;
@@ -29,13 +29,14 @@ private:
     std::vector<Projectile> projectiles;
     void update_projectiles();
 
+
 public:
     int x;
     int y;
     int range;
     int level;
 	Building();
-    Building(int x, int y, std::vector<Enemy> *enemies);
+    Building(int x, int y, std::vector<Enemy> *enemies,int *money);
     void draw();
     void update();
     void attack();

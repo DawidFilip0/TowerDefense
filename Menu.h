@@ -29,8 +29,8 @@ class Menu{
 		Menu(int *playerHealth, BldMgr *buildingManager, int *money);
 		
 		void borderPositions();
-		string options[2][11];
-		string& getOption(int x, int y);
+		string options[11];
+		string& getOption(int x);
 		void showCursor();
 		void printMenu();
 		void handleInput(int ch);

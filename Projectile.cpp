@@ -6,7 +6,7 @@ Projectile::Projectile(int x, int y, int dest_x, int dest_y){
 	this -> y = y;
 	this -> dest_x = dest_x;
 	this -> dest_y = dest_y;
-	this -> clock = new Clock(80);
+	this -> clock = new Clock(50);
 };
 
 Projectile::~Projectile(){

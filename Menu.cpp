@@ -5,24 +5,24 @@ Menu::Menu(int *playerHealth , BldMgr *buildingManager, int *money){
 	this -> playerHealth = playerHealth;
 	this -> buildingManager = buildingManager;
 	this -> money = money;
-    options[0][0] = "";
-    options[0][1] = "  [1] Building menu";
-    options[0][2] = "  [2] Upgrade Menu";
-    options[0][3] = "  [3] Options";
-    options[0][8] = "  [9] Exit game";
-    options[0][9] = "  [Spacebar] to confirm ";
-    options[0][10] = "  arrows to move";
-    options[1][0] = "";
-    options[1][1] = "  [1] Archer Tower";
-    options[1][2] = "  [2] Cannon Outpost";
-    options[1][8] = "  [9] Go back";
+    options[0] = "";
+    options[1] = "  [1] Archer Tower";
+    options[2] = "  [2] Cannon Outpost";
+    options[3] = "  ";
+    options[4] = "  ";
+    options[5] = "  [Spacebar] to confirm ";
+    options[6] = "  arrows to move";
+    options[7] = "";
+    options[8] = "  ";
+    options[9] = "  ";
+    options[10] = "  [9] Go back";
 }
 
 void Menu::borderPositions(){
 }
 
-string& Menu::getOption(int x, int y){
-	return options[x][y];
+string& Menu::getOption(int x){
+	return options[x];
 }
 
 void Menu::handleInput(int ch){
@@ -44,27 +44,15 @@ void Menu::handleInput(int ch){
                 	if(previewBuilding == true){
                 		previewBuilding = false;
 					}
-					else{
-					    selectedMenuOption = 0;	
-					}
                 	break;
                 case '1':
-                	switch(selectedMenuOption){
-                		case 0:
-                			selectedMenuOption = 1;
-                			break;
-                		case 1:
-                			previewBuilding = true;;
-                			selectedMenuOption = 0;
-                			break;						
-					}
-                	
-                	break;
+             		previewBuilding = true;;
+                	break;											
                 case ' ':
                 	
                 	if (previewBuilding == true){
                 		previewBuilding = false;
-                		buildingManager -> addBuilding(cursorX,cursorY);
+                		buildingManager -> addBuilding(cursorX,cursorY, 1);
 					}
 					break;
 
@@ -94,7 +82,7 @@ void Menu::printMenu(){
 				move(i,90);
 				addch('|');
 				if( i < 11 ){					
-					str = getOption(selectedMenuOption,i);					
+					str = getOption(i);					
 					printw(str.c_str());					
 				}
 				if(i == 28) {
