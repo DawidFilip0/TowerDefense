@@ -5,9 +5,10 @@ ArcherTower::ArcherTower() {
 }
 
 ArcherTower::ArcherTower(int x, int y, std::vector<Enemy>* enemies, int* money)   : Building(x, y, enemies, money) {
-	damage = 25;
+	damage = 30;
 	range = 12;
-	this -> clock = new Clock(200);
+	this -> clock = new Clock(650);
+	
 }
 
 void ArcherTower::draw() {

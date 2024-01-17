@@ -6,9 +6,9 @@ Menu::Menu(int *playerHealth , BldMgr *buildingManager, int *money){
 	this -> buildingManager = buildingManager;
 	this -> money = money;
     options[0] = "";
-    options[1] = "  [1] Archer Tower";
-    options[2] = "  [2] Cannon Outpost";
-    options[3] = "  ";
+    options[1] = "  [1] Archer Tower    $100";
+    options[2] = "  [2] Cannon Outpost  $300";
+    options[3] = "  [3] Machine Gun     $900";
     options[4] = "  ";
     options[5] = "  [Spacebar] to confirm ";
     options[6] = "  arrows to move";
@@ -46,13 +46,22 @@ void Menu::handleInput(int ch){
 					}
                 	break;
                 case '1':
-             		previewBuilding = true;;
+             		previewBuilding = true;
+             		bType=1;
+                	break;
+				case '2':
+             		previewBuilding = true;
+             		bType=2;
+                	break;
+				case '3':
+             		previewBuilding = true;
+             		bType=3;
                 	break;											
                 case ' ':
                 	
                 	if (previewBuilding == true){
                 		previewBuilding = false;
-                		buildingManager -> addBuilding(cursorX,cursorY, 1);
+                		buildingManager -> addBuilding(cursorX,cursorY, bType);
 					}
 					break;
 

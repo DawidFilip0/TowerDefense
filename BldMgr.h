@@ -2,13 +2,15 @@
 #include <vector>
 #include "Building.h"
 #include "Wave.h"
-#include "Archer_Tower.h"
+#include "ArcherTower.h"
+#include "CannonOutpost.h"
+#include "MachineGun.h"
 
 
 class BldMgr{
 	private:
 		int *money;
-		std::vector<Building> *buildings;
+		std::vector<Building*> buildings;
 		std::vector<std::vector<int>> *pathEdges;
 		Wave *wave;
 	public:

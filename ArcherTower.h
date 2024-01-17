@@ -10,7 +10,7 @@ private:
 public:
     ArcherTower();
     ArcherTower(int x, int y, std::vector<Enemy>* enemies, int* money);
-    void draw() ; 
+    void draw() override; 
 };
 
 #endif 

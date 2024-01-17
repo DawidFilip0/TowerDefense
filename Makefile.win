@@ -4,8 +4,8 @@
 CPP      = g++.exe -D__DEBUG__
 CC       = gcc.exe -D__DEBUG__
 WINDRES  = windres.exe
-OBJ      = main.o Building.o Menu.o Path.o Game.o Enemy.o Clock.o Wave.o BldMgr.o Projectile.o ArcherTower.o
-LINKOBJ  = main.o Building.o Menu.o Path.o Game.o Enemy.o Clock.o Wave.o BldMgr.o Projectile.o ArcherTower.o
+OBJ      = main.o Building.o Menu.o Path.o Game.o Enemy.o Clock.o Wave.o BldMgr.o Projectile.o ArcherTower.o CannonOutpost.o MachineGun.o
+LINKOBJ  = main.o Building.o Menu.o Path.o Game.o Enemy.o Clock.o Wave.o BldMgr.o Projectile.o ArcherTower.o CannonOutpost.o MachineGun.o
 LIBS     = -L"C:/Program Files (x86)/Embarcadero/Dev-Cpp/TDM-GCC-64/lib" -L"C:/Program Files (x86)/Embarcadero/Dev-Cpp/TDM-GCC-64/x86_64-w64-mingw32/lib" -static-libgcc -L"D:/Programowanie/C++/Projekt PJATK 1 semestr/ncurses/lib" -lncursesw -g3
 INCS     = -I"C:/Program Files (x86)/Embarcadero/Dev-Cpp/TDM-GCC-64/include" -I"C:/Program Files (x86)/Embarcadero/Dev-Cpp/TDM-GCC-64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Embarcadero/Dev-Cpp/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include" -I"D:/Programowanie/C++/Projekt PJATK 1 semestr/ncurses/include" -I"D:/Programowanie/C++/Projekt PJATK 1 semestr/v5/TowerDefense"
 CXXINCS  = -I"C:/Program Files (x86)/Embarcadero/Dev-Cpp/TDM-GCC-64/include" -I"C:/Program Files (x86)/Embarcadero/Dev-Cpp/TDM-GCC-64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Embarcadero/Dev-Cpp/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include" -I"C:/Program Files (x86)/Embarcadero/Dev-Cpp/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++" -I"D:/Programowanie/C++/Projekt PJATK 1 semestr/ncurses/include" -I"D:/Programowanie/C++/Projekt PJATK 1 semestr/v5/TowerDefense"
@@ -56,3 +56,9 @@ Projectile.o: Projectile.cpp
 
 ArcherTower.o: ArcherTower.cpp
 	$(CPP) -c ArcherTower.cpp -o ArcherTower.o $(CXXFLAGS)
+
+CannonOutpost.o: CannonOutpost.cpp
+	$(CPP) -c CannonOutpost.cpp -o CannonOutpost.o $(CXXFLAGS)
+
+MachineGun.o: MachineGun.cpp
+	$(CPP) -c MachineGun.cpp -o MachineGun.o $(CXXFLAGS)

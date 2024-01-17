@@ -37,7 +37,7 @@ public:
     int level;
 	Building();
     Building(int x, int y, std::vector<Enemy> *enemies,int *money);
-    void draw();
+    virtual void draw();
     void update();
     void attack();
 };

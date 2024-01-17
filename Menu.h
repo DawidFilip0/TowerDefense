@@ -22,6 +22,7 @@ class Menu{
 		bool previewBuilding = false;
 		BldMgr *buildingManager;
 		int *money; 
+		int bType = 0;
 		
 				
 	public:
