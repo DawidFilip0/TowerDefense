@@ -1,23 +1,24 @@
-#Tower Defense Game Using Ncurses
+# Tower Defense Game Using Ncurses
 
-This is a Tower Defense game built with the Ncurses library in C++. 
-Like other tower defense games, you can place buildings to defend your base from enemies following a predetermined path. 
+This is a Tower Defense game built with the Ncurses library in C++.  
+Like other tower defense games, you can place buildings to defend your base from enemies following a predetermined path.  
 The goal is to survive as long as possible while waves of enemies grow increasingly powerful.
 
-##Features
+## Features
 
--Grid-based map defining valid tower placement and enemy paths
--Basic tower placement and attack mechanics
--Multiple enemy types with varying characteristics
--Ncurses-based text UI for lightweight graphics
--Game loop with enemies spawning in waves
-  
-##Requirements
+- Grid-based map defining valid tower placement and enemy paths  
+- Basic tower placement and attack mechanics  
+- Multiple enemy types with varying characteristics  
+- Ncurses-based text UI for lightweight graphics  
+- Game loop with enemies spawning in waves  
 
--Any C++ compiler (e.g., GCC)
--Ncurses library
+## Requirements
 
-##How to Play
-Run the game
-Place towers strategically to stop incoming enemies
-Defend your base through all enemy waves
+- Any C++ compiler (e.g., GCC)  
+- Ncurses library  
+
+## How to Play
+
+1. Run the game  
+2. Place towers strategically to stop incoming enemies  
+3. Defend your base through all enemy waves  
